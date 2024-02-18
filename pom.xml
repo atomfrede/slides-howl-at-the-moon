@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.github.atomfrede</groupId>
+    <artifactId>slides-howl-at-the-moon</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>AsciiDoc to HTML Maven Example</name>
+    <description>An example project that demonstrates how to convert AsciiDoc to HTML5 using the Asciidoctor Maven plugin.</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <asciidoctor.maven.plugin.version>3.0.0</asciidoctor.maven.plugin.version>
+        <asciidoctorj.version>2.5.11</asciidoctorj.version>
+        <jruby.version>9.4.5.0</jruby.version>
+    </properties>
+
+    <build>
+        <defaultGoal>process-resources</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>${asciidoctor.maven.plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jruby</groupId>
+                        <artifactId>jruby</artifactId>
+                        <version>${jruby.version}</version>
+                    </dependency>
+        
+                    <dependency>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctorj</artifactId>
+                        <version>${asciidoctorj.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctorj-revealjs</artifactId>
+                        <version>5.1.0</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>generate-slides</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <backend>revealjs</backend>
+                            <requires>
+                              <require>asciidoctor-revealjs</require>
+                            </requires>
+                            <attributes>
+                              <revealjsdir>
+                                https://cdn.jsdelivr.net/npm/reveal.js@5.0.3
+                              </revealjsdir>
+                            </attributes>
+                          </configuration>
+                        </execution>
+                        <execution>
+                            <id>serve</id>              
+                            <phase>generate-resources</phase> 
+                            <goals>
+                                <goal>http</goal>             
+                            </goals>
+                            <configuration>                   
+                                <port>8080</port>
+                                <backend>revealjs</backend>
+                                <requires>
+                                  <require>asciidoctor-revealjs</require>
+                                </requires>
+                                <attributes>
+                                  <revealjsdir>
+                                    https://cdn.jsdelivr.net/npm/reveal.js@5.0.3
+                                  </revealjsdir>
+                                </attributes>
+                            </configuration>
+                        </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,22 @@
+[.columns]
+== About
+
+[.column]
+* Senior Software Engineer @adesso Business Area Manufacturing
+
+[.column]
+IMAGE wo kommste wech
+
+[.column]
+* JHipster Core Team Member
+* Java User Group Paderborn Organizer
+
+[.notes]
+--
+* tell anecdote
+* make a point
+--
+
+== About
+
+QR CODES

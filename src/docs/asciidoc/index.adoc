@@ -1,0 +1,12 @@
+= HOWL at the moon: Back to the future mit HTMX
+:author: Frederik Hahne @atomfrede@mastodon.social
+:revealjs_theme: sky
+:source-highlighter: highlight.js
+:highlightjs-languages: html,java   
+:icons: font
+:imagesdir: images/
+
+include::_about.adoc[]
+
+include::_intro.adoc[]
+
