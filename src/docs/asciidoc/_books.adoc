@@ -1,0 +1,18 @@
+[.columns]
+== Must Read
+
+[.column]
+image::hypermedia-systems-cover.png[]
+
+[.column]
+image::modern-frontends-cover.png[]
+
+== Some Links
+
+* https://htmx.org/[htmx.org]
+* https://www.wimdeblauwe.com/[wimdeblauwe.com]
+* https://www.wimdeblauwe.com/books/taming-thymeleaf/[Taming Thymeleaf]
+* https://www.wimdeblauwe.com/books/modern-frontends-with-htmx/[Modern Frontends with HTMX]
+* https://hypermedia.systems[Hypermedia Systems]
+* https://github.com/dashorst/funwithflags[Fun with Flags (Quarkus, HTMX, Websockets)]
+

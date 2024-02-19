@@ -9,20 +9,19 @@
 
 image::adesso_pb.jpg[]
 
-
-[.notes]
---
-* 
-* make a point
---
-
 [.columns]
 === About
 
 [.column]
-image::adesso_pb.jpg[]
+image::duke-pb.png[width=200]
+image::jhipster.png[width=200]
+
 
 [.column]
+* 👨‍👩‍👧‍👦 🏊‍♂️ 🚴 🏃
 * JHipster Core Team Member
 * JUG Paderborn Orga 
+
+
+
 

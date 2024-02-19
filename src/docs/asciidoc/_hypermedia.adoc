@@ -1,0 +1,67 @@
+== Hypermedia & Hypertext
+
+NOTE: How old are the terms hypermedia and hypertext?
+
+[%step]
+[quote,Ted Nelson, 1963]
+Hypertexts: new forms of writing, appearing on computer screens, that will branch or perform at the reader’s command. A hypertext is a non-sequential piece of writing; only the computer display makes it practical.
+
+=== Hypermedia & Hypertext
+
+NOTE: actually, it all goes even back to the 40ties and the memex 😱
+
+[%step]
+* essential is the non-linear branching model
+* links between hypermedia documents
+
+== HTML
+
+* HTML is the most widely used form of hypermedia
+* Invented by Tim-Berners Lee in the 90ties
+* Today more or less "everywhere"
+* only two elements: anchor and form
+
+=== HTML Anchor
+
+[source,html]
+----
+<a href="https://www.javaland.eu">
+  Javaland
+</a>
+----
+
+[%step]
+* What does it mean and do?
+* Show `Javaland` is clickable
+* Issue a request to `https://www.javaland.eu`
+* Replace the entire screen with the response body
+
+=== HTML Form
+
+[source,html]
+----
+<form action="/signup" method="post">
+  <input type="text" name="email" 
+  placeholder="Enter Email To Sign Up..."/>
+  <button>Sign Up</button>
+</form>
+----
+
+* Show a text input and a `Sign Up` button
+* When form is submitted issue a Post request to the server
+* Replace the entire screen with the response bodyfootnote:disclaimer[Actually a little simplified]
+
+=== What about REST and SPA?
+
+* Anchor and Form have been enough to make the web grow 
+* Json Data API + SPA are *not hypermedia*
+* HTML has stopped evolving as a *hypermedia*
+
+=== HTML as Hypermedia
+
+What would have happened if HTML has evolved as *hypermedia*? 🤔
+
+
+
+
+

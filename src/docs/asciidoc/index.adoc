@@ -24,3 +24,14 @@ include::_about.adoc[]
 
 include::_intro.adoc[]
 
+include::_hypermedia.adoc[]
+
+include::_htmx.adoc[]
+
+include::_htmx_patterns.adoc[]
+
+include::_thymeleaf_boot.adoc[]
+
+include::_books.adoc[]
+
+

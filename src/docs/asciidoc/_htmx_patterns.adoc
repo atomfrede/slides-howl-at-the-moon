@@ -1,0 +1,98 @@
+== HTMX Patterns
+
+* Typical patterns/use cases for web applications
+
+=== Progressive Enhancement
+
+[source,html]
+----
+<html>
+...
+<body hx-boost="true">
+...
+</body>
+</html>
+----
+
+=== Progressive Enhancement
+
+[source,html]
+----
+<form id="new-todo-form" th:action="@{/}" method="post" th:object="${item}">
+    <input id="new-todo-input" class="new-todo" placeholder="What needs to be done?" autofocus
+        autocomplete="false"
+        name="title"
+        th:field="*{title}"
+        hx-target="#todo-list"
+        hx-swap="beforeend"
+        hx-post="/"
+        hx-trigger="keyup[key=='Enter']"
+    >
+</form>
+----
+
+* Keep the normal form, such that it even works without Javascript
+
+=== Sorting
+
+[source,html]
+----
+<div hx-get="/manager/users?sort=username,desc
+&size=10&page=0&query=" 
+hx-target="#users-table-wrapper" 
+hx-push-url="true">
+----
+
+=== Paging
+
+[source,html]
+----
+<a hx-get="/manager/users?sort=username,ASC
+&size=10&page=0&query=" 
+hx-target="#users-table-wrapper" 
+hx-push-url="true">1</a>
+----
+
+=== Inline Updates
+
+[source,html]
+----
+<a href="/manager/users/57/change-status?page=0&size=10
+&sort=username,ASC&query=" title="Benutzerstatus ändern" 
+hx-get="/manager/users/57/change-status?page=0&size=10
+&sort=username,ASC&query=" 
+hx-target="closest td" 
+hx-swap="outerHTML">deaktiviert</a>
+----
+
+=== Trigger Client side Events
+
+[source,java]
+----
+response.setHeader("HX-Trigger", "itemAdded");
+----
+
+[source,html]
+----
+<span th:fragment="active-items-count"
+      id="active-items-count"
+      class="todo-count"
+      hx-get="/active-items-count"
+      hx-swap="outerHTML"
+      hx-trigger="itemAdded from:body">
+...
+</span>
+----
+
+=== Much more
+
+* Modal dialogs
+* Inline editing/validation
+* Active search
+* lazy loading
+* Endless scrolling
+* Websockets, Server Send Events
+* ...
+
+
+

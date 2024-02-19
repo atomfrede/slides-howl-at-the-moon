@@ -1,0 +1,37 @@
+== Why Thymeleaf?
+
+* You can use any template language you like
+* Fragments makes it very convinient to create partial html
+* Usually you use fragments already and can reuse them
+
+=== Fragments
+
+[source,java]
+----
+return "fragments :: todoItem";
+----
+
+[source,html]
+----
+<li th:fragment="todoItem(item)">
+...
+</li>
+----
+
+== Why Spring Boot?
+
+* You can of course use Quarkus, Micronaut "what ever you like"
+* Good integration with thymeleaf
+* https://github.com/wimdeblauwe/htmx-spring-boot[HTMX Spring Boot Integration]
+
+=== Spring Boot Integration
+
+* `@HxRequest`
+* `@HxTrigger("itemAdded")`
+* Out Of Band Swaps ⁉️
+
+=== Out of Band swaps
+
+* Return multiple fragments
+* Update multiple elements on the page
+* e.g. Number of todo items (instead doing a second request)

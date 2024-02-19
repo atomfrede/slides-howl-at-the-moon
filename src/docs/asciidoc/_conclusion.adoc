@@ -1,0 +1,17 @@
+== Conlusion
+
+* Hypermedia driven applications are a viable alternative to omnipresent SPAs
+* Reduce complexity 
+* At least opens the way to progressive enhancement
+
+=== Good Fit
+
+* Form based ("enterprise") applications
+* CRUD frontends
+* e-commerce frontends
+
+=== Maybe not a good idea
+
+* Something like google docs, maps
+* Heavy interaction
+* *But* for sure you can combine the two approaches

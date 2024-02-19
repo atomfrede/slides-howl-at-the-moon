@@ -1,0 +1,64 @@
+== HTMX
+
+[NOTE]
+Why should only `<a>` and `<form>` be able to make HTTP requests?
+
+[NOTE]
+Why should only `click` & `submit` events trigger them?
+
+[NOTE]
+Why should only `GET` & `POST` methods be available?
+
+[NOTE]
+Why should you only be able to replace the entire screen?
+
+[%notitle]
+=== HTMX
+
+image::rising-start.png[]
+
+=== Fun Fact
+
+[IMPORTANT] 
+==== 
+HTMX is the sucessor of intercooler.js. 
+Intercooler.js started 2013/2014 with *exact* the same approach, but didn't get much traction.
+Somehow this is different now with HTMX. 🤷
+====
+
+=== HTMX
+
+[source,html]
+----
+<button hx-get="/contacts/1" hx-target="#contact-ui">
+    Fetch Contact
+</button>
+----
+
+* No explicit scripting, JSON handling
+* *declarative* approach
+* Response is supposed to be *HTML* again
+
+=== Get Started
+
+[source,html]
+----
+<head>
+<script src="https://unpkg.com/htmx.org@1.9.2"
+        integrity="sha384-L6OqL9pRWyyFU3+/bjdSri+iIphTN/bvYyM37tICVyOJkWZLpP2vGn6VUEXgzg6h"
+        crossorigin="anonymous"></script>
+</head>
+----
+
+=== HTML eXtended
+
+* Any element can make HTTP requests (hx-get|delete|post|put|patch)
+* Any element can trigger HTTP requests (hx-trigger)
+* Any HTTP method can be used 
+* Any element can be replaced (hx-target, hx-swap)
+
+
+
+
+
+

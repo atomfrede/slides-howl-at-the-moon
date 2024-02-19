@@ -1,16 +1,16 @@
 == Agenda
 
+* Hypertext & Hypermedia
+* HTMX
+* Thymeleaf, Spring Boot and HTMX
 
-[source,html,highlight="3|4..5|4,7"]
-----
-<html>
-
-<body>
-    <form id="new-todo-form">
-    </form>
-</body>
-</html>
-----
+[.notes]
+--
+* Woher kommt hypermedia/hypertext?
+* HTML als typisches Beispiel
+* Warum ist Thymeleaf passend?
+* HTMX und typische Pattern
+--
 
 
 
