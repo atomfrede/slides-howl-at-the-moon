@@ -1,0 +1,49 @@
+[subs="attributes"]
+++++
+<div class="event">
+	<div class="participant">
+		<a href="https://github.com/atomfrede" title="Frederik"><img src="images/fred.jpg" alt="Photo of Frederik" class="logo"></a>
+		<div class="name">
+			<p><a href="https://github.com/atomfrede" title="About Frederik">Frederik Hahne</a><p>
+			<p><a href="https://mastodon.social/@atomfrede" title="Frederik on Mastodon">@atomfrede</a></p>
+		</div>
+	</div>
+	<div class="participant">
+		<a href="{host-url}" title="{host-name}"><img src="{host-logo-url}" alt="Logo of {host-name}" class="logo" style="{host-logo-style}"></a>
+		<div class="name">
+			<p><a href="{host-url}" title="{host-name} website">{host-name}</a></p>
+			<p><a href="{host-social-url}" title="{host-name} on Social">{host-social-name}</a></p>
+		</div>
+	</div>
+	<div class="participant">
+		<a href="https://www.adesso.de/de/unternehmen/standorte/paderborn.jsp" title="adesso @ paderborn"><img src="images/adesso_logo.png" alt="adesso Logo" class="logo" style="background-color: white"></a>
+		<div class="name">
+			<p>Senior Software Engineer</a></p>
+			<p>adesso SE</p>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="participant">
+		<a href="https://github.com/atomfrede" title="Fred"><img src="images/fred.jpg" alt="Photo of Frederik" class="logo"></a>
+		<a href="https://www.adesso.de/de/unternehmen/standorte/paderborn.jsp"><img src="images/adesso_logo.png" class="logo" style="background-color: white"></a>
+		<div class="name"><p>
+			<a href="https://github.com/atomfrede" title="About Frederik">Frederik Hahne</a>
+			/ <a href="https://mastodon.social/@atomfrede" title="Frederik on Mastodon">@atomfrede@mastodon.social </a>
+		</p></div>
+	</div>
+	<div class="participant">
+		<a href="{host-url}" title="{host-name}"><img src="{host-logo-url}" alt="Logo of {host-name}" class="logo" style="{host-logo-style}"></a>
+		<div class="name"><p>
+			<a href="{host-url}" title="{host-name} website">{host-name}</a>
+			/ <a href="{host-social-url}" title="{host-name} on social">{host-social-name}</a>
+		</p></div>
+	</div>
+</footer>
+<!-- Just adding a footer does not work because reveal.js puts it into the slides and we couldn't get it out via CSS. So we move it via JavaScript. -->
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		document.body.appendChild(document.querySelector('footer'));
+	})
+</script>
+++++

@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/maven,java,gradle,node,macos,linux
 # Edit at https://www.toptal.com/developers/gitignore?templates=maven,java,gradle,node,macos,linux
 
+.vscode
+
 ### Java ###
 # Compiled class file
 *.class

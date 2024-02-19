@@ -1,10 +1,24 @@
 = HOWL at the moon: Back to the future mit HTMX
-:author: Frederik Hahne @atomfrede@mastodon.social
-:revealjs_theme: sky
+:revealjs_theme: moon
+:revealjs_controls: false
+:revealjs_progress: false
+:revealjs_slideNumber: false
+:revealjs_history: true
+:revealjs_center: true
+:revealjs_transition: fade
 :source-highlighter: highlight.js
 :highlightjs-languages: html,java   
 :icons: font
 :imagesdir: images/
+:customcss: css/custom-light.css
+
+:host-name: JUG Ostfalen
+:host-url: https://www.jug-ostfalen.de/
+:host-logo-url: images/logo-jug-ostfalen.png
+:host-logo-style: background-color: transparent; border-color: transparent !important;
+:host-social-name: @jugostfalen@ijug.social
+:host-social-url: https://ijug.social/@jugostfalen
+include::_shared/_title_footer.adoc[]
 
 include::_about.adoc[]
 

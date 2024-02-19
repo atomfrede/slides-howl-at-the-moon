@@ -3,20 +3,26 @@
 
 [.column]
 * Senior Software Engineer @adesso Business Area Manufacturing
+* Java, Web
 
 [.column]
-IMAGE wo kommste wech
 
-[.column]
-* JHipster Core Team Member
-* Java User Group Paderborn Organizer
+image::adesso_pb.jpg[]
+
 
 [.notes]
 --
-* tell anecdote
+* 
 * make a point
 --
 
-== About
+[.columns]
+=== About
 
-QR CODES
+[.column]
+image::adesso_pb.jpg[]
+
+[.column]
+* JHipster Core Team Member
+* JUG Paderborn Orga 
+
