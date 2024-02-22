@@ -63,24 +63,36 @@ hx-push-url="true">2</a>
 
 === Inline Updates
 
-[source,html]
+[source,html,highlight="3|4,6"]
 ----
-<a href="/manager/users/57/change-status?page=0&size=10
-&sort=username,ASC&query=" title="Benutzerstatus ändern" 
-hx-get="/manager/users/57/change-status?page=0&size=10
-&sort=username,ASC&query=" 
+<a href="/manager/users/57/change-status" 
+title="Benutzerstatus ändern" 
+hx-get="/manager/users/57/change-status" 
 hx-target="closest td" 
 hx-swap="outerHTML">deaktiviert</a>
 ----
 
+=== Inline Updates Server Side
+
+[source,java,highlight="2,3|11"]
+----
+@GetMapping(value = "/manager/users/{id}/change-status", 
+            produces = "text/html-partial", 
+            headers = "HX-Request")
+public String changeStatus_htmx(@PathVariable Long id, 
+    Pageable pageable, String query, Model model) {
+    User user = userManagementService.findOneById(id);
+    userManagementService.changeStatus(user);
+    createUsersPageModel(model, pageable, Optional.ofNullable(query));
+    model.addAttribute("user", user);
+
+    return "usermanagement/fragments/user-row-contents :: user-status";
+}
+----
+
 === Trigger Client side Events
 
-[source,java]
-----
-response.setHeader("HX-Trigger", "itemAdded");
-----
-
-[source,html]
+[source,html, highlight="6|4"]
 ----
 <span th:fragment="active-items-count"
       id="active-items-count"
@@ -90,6 +102,21 @@ response.setHeader("HX-Trigger", "itemAdded");
       hx-trigger="itemAdded from:body">
 ...
 </span>
+----
+
+=== Trigger Client side Events Server Side
+
+[source,java, highlight="7,8"]
+----
+@PostMapping(headers = "HX-Request")
+public String htmxAddTodoItem(TodoItemFormData formData, 
+    Model model, HttpServletResponse response) {
+    TodoItem item = repository.save(...);
+    model.addAttribute("item", toDto(item));
+
+    response.setHeader("HX-Trigger", "itemAdded");
+    return "fragments :: todoItem";
+}
 ----
 
 === Much more

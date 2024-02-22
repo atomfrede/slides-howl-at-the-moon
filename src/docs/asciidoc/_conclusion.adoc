@@ -14,4 +14,20 @@
 
 * Something like google docs, maps
 * Heavy interaction
+* Offline requirements
 * *But* for sure you can combine the two approaches
+
+=== Regarding heise
+
+[quote,heise.de, Feb. 22. 2024]
+Allerdings gibt es so viele Aspekte, die HTMX für größere, komplexere Projekte vollkommen ungeeignet machen: HTMX missachtet bewährte Architekturprinzipien, widerspricht gängigen Standards, missachtet die Trennung von UI und Daten und legt dem Backend Restriktionen auf, weil das Frontend es so verlangt. Es lässt sich nicht vernünftig debuggen oder testen.
+
+=== heise II
+
+[quote,heise.de, Feb. 22. 2024]
+HTMX zwingt Sie zudem dazu, sich eine weitere framework- oder bibliotheksspezifische, proprietäre Syntax aneignen zu müssen. Die von HTMX eingeführten Attribute und deren Wertestrukturen folgen nämlich ebenfalls keinem Standard. 
+
+=== heise III
+
+[quote,heise.de, Feb. 22. 2024]
+Wenn das Ergebnis eines HTTP-Requests direkt als Inner-HTML gerendert wird, wie verhält es sich dann mit APIs? Schließlich muss aus dem JSON, XML oder einem anderen Datenformat, das eine API liefert, etwas entstehen, das in HTML darstellbar ist. Es müsste also eine Art Templating oder Ähnliches geben, oder? Doch das ist nicht der vorgesehene Weg. 

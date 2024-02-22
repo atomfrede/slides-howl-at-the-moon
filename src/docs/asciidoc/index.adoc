@@ -32,6 +32,8 @@ include::_htmx_patterns.adoc[]
 
 include::_thymeleaf_boot.adoc[]
 
+include::_conclusion.adoc[]
+
 include::_books.adoc[]
 
 [.transparent-slide]

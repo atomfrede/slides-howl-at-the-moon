@@ -15,10 +15,14 @@
 
 === Partial HTML
 
-[source,java]
+[source,java,hightlight="2|5"]
 ----
-
+@GetMapping(value = "...",
+    produces = "text/html-partial",
+    headers = "HX-Request") 
+...
 return "fragments :: todoItem";
+...
 ----
 
 == Why Spring Boot?

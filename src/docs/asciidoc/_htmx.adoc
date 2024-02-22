@@ -30,7 +30,8 @@ Somehow this is different now with HTMX. 🤷
 
 [source,html]
 ----
-<button hx-get="/contacts/1" hx-target="#contact-ui">
+<button hx-get="/contacts/1" 
+        hx-target="#contact-ui">
     Fetch Contact
 </button>
 ----

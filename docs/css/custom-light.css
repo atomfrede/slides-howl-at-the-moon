@@ -43,7 +43,7 @@
     background-color: #005c9e;
   }  
   .reveal .slides   {
-    bottom: 30px; }
+    bottom: 30px; }  
   
   .reveal .slides > section:not(.stack),
   .reveal .slides > section > section {
@@ -55,6 +55,10 @@
   .transparent-slide .reveal .slides section,
   .empty .reveal .slides section {
     background-color: inherit; }
+  
+  .transparent-slide {
+    background-color: transparent !important;
+  }
   
   .empty footer {
     display: none; }
