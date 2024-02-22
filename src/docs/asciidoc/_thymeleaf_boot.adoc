@@ -6,16 +6,19 @@
 
 === Fragments
 
-[source,java]
-----
-return "fragments :: todoItem";
-----
-
 [source,html]
 ----
 <li th:fragment="todoItem(item)">
 ...
 </li>
+----
+
+=== Partial HTML
+
+[source,java]
+----
+
+return "fragments :: todoItem";
 ----
 
 == Why Spring Boot?

@@ -34,4 +34,12 @@ include::_thymeleaf_boot.adoc[]
 
 include::_books.adoc[]
 
+[.transparent-slide]
+[%notitle,background-iframe="https://www.youtube.com/embed/9-eNIbTwReE?si=X4lHhaEGhx4L3h28&amp;controls=0"[%notitle]
+== no-slide
+
+
+
+
+
 
