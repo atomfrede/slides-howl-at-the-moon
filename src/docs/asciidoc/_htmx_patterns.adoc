@@ -16,10 +16,11 @@
 
 === Progressive Enhancement
 
-[source,html]
+[source,html,highlight="1,2,6..10"]
 ----
-<form id="new-todo-form" th:action="@{/}" method="post" th:object="${item}">
-    <input id="new-todo-input" class="new-todo" placeholder="What needs to be done?" autofocus
+<form id="new-todo-form" th:action="@{/}" 
+    method="post" th:object="${item}">
+    <input id="new-todo-input" class="new-todo"
         autocomplete="false"
         name="title"
         th:field="*{title}"
@@ -35,22 +36,29 @@
 
 === Sorting
 
-[source,html]
+[source,html,highlight="2,3|4|5"]
 ----
+<th>
 <div hx-get="/manager/users?sort=username,desc
 &size=10&page=0&query=" 
 hx-target="#users-table-wrapper" 
 hx-push-url="true">
+</th>
 ----
 
 === Paging
 
-[source,html]
+[source,html,highlight="2,4|5,6"]
 ----
 <a hx-get="/manager/users?sort=username,ASC
 &size=10&page=0&query=" 
 hx-target="#users-table-wrapper" 
 hx-push-url="true">1</a>
+<a hx-get="/manager/users?sort=username,ASC
+&size=10&page=1&query=" 
+hx-target="#users-table-wrapper" 
+hx-push-url="true">2</a>
+...
 ----
 
 === Inline Updates
