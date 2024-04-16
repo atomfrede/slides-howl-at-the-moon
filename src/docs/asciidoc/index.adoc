@@ -12,12 +12,12 @@
 :imagesdir: images/
 :customcss: css/custom-light.css
 
-:host-name: JUG Ostfalen
-:host-url: https://www.jug-ostfalen.de/
-:host-logo-url: images/logo-jug-ostfalen.png
+:host-name: JUG Mainz
+:host-url: https://www.jug-mz.de
+:host-logo-url: images/logo-jug-mainz.png
 :host-logo-style: background-color: transparent; border-color: transparent !important;
-:host-social-name: @jugostfalen@ijug.social
-:host-social-url: https://ijug.social/@jugostfalen
+:host-social-name: @jug_mz@ijug.social 
+:host-social-url: https://ijug.social/@jug_mz
 include::_shared/_title_footer.adoc[]
 
 include::_about.adoc[]
