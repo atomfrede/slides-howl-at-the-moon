@@ -508,7 +508,8 @@ Somehow this is different now with HTMX. 🤷</p></div></td></tr></table></div><
 &amp;size=10&amp;page=0&amp;query="
 hx-target="#users-table-wrapper"
 hx-push-url="true"&gt;
-&lt;/th&gt;</code></pre></div></div></div></section><section id="_paging"><h2>Paging</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="2,4|5,6" data-lang="html">&lt;a hx-get="/manager/users?sort=username,ASC
+&lt;/th&gt;</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Was haben wir hier vergessen?</p></li><li><p>Das geht nur mit aktivierten JS</p></li><li><p>anchor verwenden</p></li></ul></div></aside></div></section><section id="_paging"><h2>Paging</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="2,4|5,6" data-lang="html">&lt;a hx-get="/manager/users?sort=username,ASC
 &amp;size=10&amp;page=0&amp;query="
 hx-target="#users-table-wrapper"
 hx-push-url="true"&gt;1&lt;/a&gt;
@@ -516,11 +517,13 @@ hx-push-url="true"&gt;1&lt;/a&gt;
 &amp;size=10&amp;page=1&amp;query="
 hx-target="#users-table-wrapper"
 hx-push-url="true"&gt;2&lt;/a&gt;
-...</code></pre></div></div></div></section><section id="_inline_updates"><h2>Inline Updates</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="3|4,6" data-lang="html">&lt;a href="/manager/users/57/change-status"
+...</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Hier fehlt was?</p></li><li><p>href verwenden</p></li></ul></div></aside></div></section><section id="_inline_updates"><h2>Inline Updates</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="3|4,6" data-lang="html">&lt;a href="/manager/users/57/change-status"
 title="Benutzerstatus ändern"
 hx-get="/manager/users/57/change-status"
 hx-target="closest td"
-hx-swap="outerHTML"&gt;deaktiviert&lt;/a&gt;</code></pre></div></div></div></section><section id="_inline_updates_server_side"><h2>Inline Updates Server Side</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="2,3|11" data-lang="java">@GetMapping(value = "/manager/users/{id}/change-status",
+hx-swap="outerHTML"&gt;deaktiviert&lt;/a&gt;</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Hier sieht man gut progressive enhancement</p></li><li><p>hx requets &#8594; nur die Zeile erzeugen</p></li><li><p>normaler href &#8594; die ganze Seite wieder als redirect (nicht optimal weil hier ggf. sort etc verloren geht)</p></li></ul></div></aside></div></section><section id="_inline_updates_server_side"><h2>Inline Updates Server Side</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="2,3|11" data-lang="java">@GetMapping(value = "/manager/users/{id}/change-status",
             produces = "text/html-partial",
             headers = "HX-Request")
 public String changeStatus_htmx(@PathVariable Long id,
@@ -546,7 +549,34 @@ public String htmxAddTodoItem(TodoItemFormData formData,
 
     response.setHeader("HX-Trigger", "itemAdded");
     return "fragments :: todoItem";
-}</code></pre></div></div></div></section><section id="_much_more"><h2>Much more</h2><div class="slide-content"><div class="ulist"><ul><li><p>Modal dialogs</p></li><li><p>Inline editing/validation</p></li><li><p>Active search</p></li><li><p>lazy loading</p></li><li><p>Endless scrolling</p></li><li><p>Websockets, Server Send Events</p></li><li><p>&#8230;&#8203;</p></li></ul></div></div></section></section>
+}</code></pre></div></div></div></section><section id="_endless_scrolling"><h2>Endless scrolling</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="6,15" data-lang="java">@GetMapping
+public String index(Model model, Pageable pageable) {
+    Slice&lt;Location&gt; slice = repository.findAll(pageable);
+    model.addAttribute("slice", slice);
+    model.addAttribute("items", slice.getContent());
+    return "endless-scrolling/index";
+}
+
+@GetMapping
+@HxRequest
+public String items(Model model, Pageable pageable) {
+    Slice&lt;Location&gt; slice = repository.findAll(pageable);
+    model.addAttribute("slice", slice);
+    model.addAttribute("items", slice.getContent());
+    return "endless-scrolling/table :: list";
+}</code></pre></div></div></div></section><section id="_endless_scrolling_2"><h2>Endless scrolling 2</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="3|7,8" data-lang="html">&lt;th:block th:each="item, iStat : ${items}"&gt;
+    &lt;th:block th:if="${!iStat.last}"&gt;
+        &lt;li th:text="${item.name}"&gt;&lt;/li&gt;
+    &lt;/th:block&gt;
+    &lt;th:block th:if="${iStat.last}"&gt;
+        &lt;li
+            hx:get="@{/endless-scrolling?sort={sort}&amp;page={page}&amp;size={size}(page=${slice.getNumber + 1},size=5,sort='name,desc')}"
+            hx-trigger="intersect once"
+            hx-swap="afterend"
+            th:text="${item.name}"
+        &gt;&lt;/li&gt;
+    &lt;/th:block&gt;
+&lt;/th:block&gt;</code></pre></div></div></div></section><section id="_much_more"><h2>Much more</h2><div class="slide-content"><div class="ulist"><ul><li><p>Modal dialogs</p></li><li><p>Inline editing/validation</p></li><li><p>Active search</p></li><li><p>lazy loading</p></li><li><p>Endless scrolling</p></li><li><p>Websockets, Server Send Events</p></li><li><p>&#8230;&#8203;</p></li></ul></div></div></section></section>
 <section><section id="_why_thymeleaf"><h2>Why Thymeleaf?</h2><div class="slide-content"><div class="ulist"><ul><li><p>You can use any template language you like</p></li><li><p>Fragments makes it very convinient to create partial html</p></li><li><p>Usually you use fragments already and can reuse them</p></li></ul></div></div></section><section id="_fragments"><h2>Fragments</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-lang="html">&lt;li th:fragment="todoItem(item)"&gt;
 ...
 &lt;/li&gt;</code></pre></div></div></div></section><section id="_partial_html"><h2>Partial HTML</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-lang="java">@GetMapping(value = "...",

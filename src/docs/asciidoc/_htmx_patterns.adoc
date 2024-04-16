@@ -46,6 +46,13 @@ hx-push-url="true">
 </th>
 ----
 
+[.notes]
+--
+* Was haben wir hier vergessen?
+* Das geht nur mit aktivierten JS
+* anchor verwenden 
+--
+
 === Paging
 
 [source,html,highlight="2,4|5,6"]
@@ -61,6 +68,12 @@ hx-push-url="true">2</a>
 ...
 ----
 
+[.notes]
+--
+* Hier fehlt was?
+* href verwenden
+--
+
 === Inline Updates
 
 [source,html,highlight="3|4,6"]
@@ -71,6 +84,13 @@ hx-get="/manager/users/57/change-status"
 hx-target="closest td" 
 hx-swap="outerHTML">deaktiviert</a>
 ----
+
+[.notes]
+--
+* Hier sieht man gut progressive enhancement
+* hx requets -> nur die Zeile erzeugen
+* normaler href -> die ganze Seite wieder als redirect (nicht optimal weil hier ggf. sort etc verloren geht)
+--
 
 === Inline Updates Server Side
 
@@ -119,13 +139,53 @@ public String htmxAddTodoItem(TodoItemFormData formData,
 }
 ----
 
+=== Endless scrolling
+
+[source,java,highlight="6,15"]
+----
+@GetMapping
+public String index(Model model, Pageable pageable) {
+    Slice<Location> slice = repository.findAll(pageable);
+    model.addAttribute("slice", slice);
+    model.addAttribute("items", slice.getContent());
+    return "endless-scrolling/index";
+}
+
+@GetMapping
+@HxRequest
+public String items(Model model, Pageable pageable) {
+    Slice<Location> slice = repository.findAll(pageable);
+    model.addAttribute("slice", slice);
+    model.addAttribute("items", slice.getContent());
+    return "endless-scrolling/table :: list";
+}
+----
+
+=== Endless scrolling 2
+
+[source,html,highlight="3|7,8,9"]
+----
+<th:block th:each="item, iStat : ${items}">
+    <th:block th:if="${!iStat.last}">
+        <li th:text="${item.name}"></li>
+    </th:block>
+    <th:block th:if="${iStat.last}">
+        <li
+            hx:get="@{/endless-scrolling?sort={sort}&page={page}&size={size}(page=${slice.getNumber + 1},size=5,sort='name,desc')}"
+            hx-trigger="intersect once"
+            hx-swap="afterend"
+            th:text="${item.name}"
+        ></li>
+    </th:block>
+</th:block>
+----
+
 === Much more
 
 * Modal dialogs
 * Inline editing/validation
 * Active search
 * lazy loading
-* Endless scrolling
 * Websockets, Server Send Events
 * ...
 
